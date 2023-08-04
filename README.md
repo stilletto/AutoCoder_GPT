@@ -2,7 +2,7 @@
 Script for automatic programming with GPT4
 In config.ini input your API key for GPT4 from OpenAI
 
-Set variables:
+At bottom of main.py set variables:
 abstract - Your targets, why you need this code and what expect from solution. 
 Example: "I want train my neural network and need dataset for it. Because my network it must predict frame next in 30 frames in video in canny egde format, so I need folders with image sequences. First folder must contain images with 16 tiles of sequential series of frames, ever next frame must be frame after 30 frames. Second folder must contain almost same images with same frames, but 16th tile in right bottom corner must be black square. Dataset must be loadable by hugging face datasets library. So folder structure must be in datasets fromat."
 
