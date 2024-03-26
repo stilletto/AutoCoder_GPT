@@ -1,17 +1,34 @@
-# AutoCoder_GPT
-Script for automatic programming with GPT4
-In config.ini input your API key for GPT4 from OpenAI
+# Automated Programming Script with GPT-4
 
-At bottom of main.py set variables:
-abstract - Your targets, why you need this code and what expect from solution. 
-Example: "I want train my neural network and need dataset for it. Because my network it must predict frame next in 30 frames in video in canny egde format, so I need folders with image sequences. First folder must contain images with 16 tiles of sequential series of frames, ever next frame must be frame after 30 frames. Second folder must contain almost same images with same frames, but 16th tile in right bottom corner must be black square. Dataset must be loadable by hugging face datasets library. So folder structure must be in datasets fromat."
+This script leverages GPT-4 to automate specific programming tasks. To get started, you'll need to provide your GPT-4 API key from OpenAI in the `config.ini` file.
 
-task - Exectly what code must do.
-Example: "I need a code that load video in any format and convert it to array of frames, after that it must convert this frames to canny edge images, resize it to 256x256 pixels and save it to folder. After this it must make image 1024 x 1024 with 16 tiles of sequential series of frames (in tiles on image next frame it is next over 30 frames but every image start from next frame of previous image first frame) and save it to direcotry with name image_column . After this it must make another directory with almost same images with same names, but 16th tile in right bottom corner must be black square and result images must be saved to folder with name conditional_images. After this move folders to folders to be in hugging face datasets format. Move last 50 images to test folder. And 10 images to validation directory. Dataset must be loadable by hugging face datasets library. So directory structure must be in datasets fromat. Additionaly add one file with captions of every image and every caption must be \"earth rotating, image in canny edges, predict last frame\". Finally save dataset as Parquet file in hugging face datasets format and split by not more than 10mb files."
+## Setting up `main.py`
 
-input_data - All what GPT need to resolve and test task.
-Example: "video file url http://38.242.234.55/sample.mp4"
+At the bottom of `main.py`, you'll need to define several variables to configure the script according to your needs:
 
-output_data - What you expect to get after code execution.
-Example: "Directory with name ground_truth with images 1024 x 1024 with 16 tiles of sequential series of frames(any next frame here it is frame number + 30 ) and directory with name conditional_images with almost same images with same names, but 16th tile in right bottom corner must be black square. Json file with captions, and .parquet files"
+### `abstract`
+**Purpose and Expected Outcome**  
+Detail your objectives and what you hope to achieve with this script.  
+**Example**:  
+"I aim to train my neural network and require a dataset for this purpose. The network should predict the next frame in a video sequence, specifically 30 frames ahead, and process these in a Canny edge format. Consequently, I need two folders containing image sequences. The first folder should have images comprising 16 tiles of sequential frame series, with each subsequent frame being 30 frames apart. The second folder should closely mirror the first, but with a black square in the bottom right tile. The dataset should adhere to Hugging Face datasets' structure for compatibility."
+
+### `task`
+**Specific Requirements**  
+Describe in detail what the script needs to accomplish.  
+**Example**:  
+"The code should load a video in any format, converting it to a frame array, transitioning these into Canny edge images, resizing them to 256x256 pixels, and storing them in a specified folder. It should then assemble an image of 1024x1024 pixels with 16 tiles of sequential frames, spaced 30 frames apart, saving this to a directory named `image_column`. A similar process should create a second directory of images (`conditional_images`), but with a black square in the 16th tile. The directories should be structured according to the Hugging Face datasets format. Move the last 50 images to a `test` folder, and 10 images to a `validation` directory. Additionally, include a file with captions for each image, labeled as 'earth rotating, image in Canny edges, predict last frame'. Finally, the dataset should be saved as Parquet files, split into chunks no larger than 10MB, formatted for Hugging Face datasets."
+
+### `input_data`
+**Required Input**  
+Specify all necessary inputs for the task.  
+**Example**:  
+"Video file URL: http://38.242.234.55/sample.mp4"
+
+### `output_data`
+**Expected Output**  
+Define what the script is expected to generate upon execution.  
+**Example**:  
+"A directory named `ground_truth` containing images of 1024x1024 pixels with 16 sequential frame tiles (each subsequent frame spaced by 30 frames), and a `conditional_images` directory with similar images, except the 16th tile in the bottom right corner must be a black square. Additionally, a JSON file with captions and Parquet files should be produced."
+
+By properly configuring these variables, you ensure the script understands your project's needs and executes the task as required.
 
